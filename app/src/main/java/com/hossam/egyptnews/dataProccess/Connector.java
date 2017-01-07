@@ -1,4 +1,4 @@
-package com.hossam.egyptnews;
+package com.hossam.egyptnews.dataProccess;
 
 import android.os.AsyncTask;
 

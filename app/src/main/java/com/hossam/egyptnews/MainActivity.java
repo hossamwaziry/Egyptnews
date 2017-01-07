@@ -2,8 +2,12 @@ package com.hossam.egyptnews;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
+import com.hossam.egyptnews.dataProccess.Connector;
+import com.hossam.egyptnews.dataProccess.DataEncap;
+import com.hossam.egyptnews.dataProccess.JsonParser;
+
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,13 +23,15 @@ public class MainActivity extends AppCompatActivity {
 
         try {
 
-            String check = connector.execute(api).get();
+            JsonParser parser = new JsonParser();
 
-            if (check != null) {
+            ArrayList<DataEncap> arrayList = parser.JsonProcess(connector.execute(api).get());
 
-                Toast.makeText(this, " good work ", Toast.LENGTH_LONG).show();
+            for (int i = 0; i < arrayList.size(); i++) {
 
+                System.out.println(arrayList.get(i).getTitle());
             }
+
 
         } catch (InterruptedException e) {
             e.printStackTrace();
