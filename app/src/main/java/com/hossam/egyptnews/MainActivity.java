@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
-    final static String api = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=3c666a83bc2a40d5936b70482b90b94d";
+    final static String api = "";
     JsonParser parser = new JsonParser();
     private RecyclerView recyclerView;
     private AdapterNews adapter;
