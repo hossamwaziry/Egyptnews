@@ -10,6 +10,9 @@ public class DataEncap {
     private String desc;
     private String title;
 
+    public DataEncap() {
+    }
+
     public DataEncap(String url, String img, String desc, String title) {
         this.url = url;
         this.img = img;
