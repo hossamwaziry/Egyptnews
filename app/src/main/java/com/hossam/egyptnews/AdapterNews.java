@@ -1,6 +1,7 @@
 package com.hossam.egyptnews;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,12 +23,14 @@ public class AdapterNews extends RecyclerView.Adapter<AdapterNews.ViewHolder> im
 
     ArrayList<DataEncap> arrayList;
     Context context;
+    MainActivity mainActivity;
 
     DataEncap encap = new DataEncap();
 
-    public AdapterNews(ArrayList<DataEncap> arrayList, Context context) {
+    public AdapterNews(ArrayList<DataEncap> arrayList, Context context, MainActivity mainActivity) {
         this.arrayList = arrayList;
         this.context = context;
+        this.mainActivity = mainActivity;
     }
 
     @Override
@@ -47,7 +50,6 @@ public class AdapterNews extends RecyclerView.Adapter<AdapterNews.ViewHolder> im
 
         holder.textTitle.setText(encap.getTitle());
         holder.textDesc.setText(encap.getDesc());
-
         Picasso.with(context).load(encap.getImg()).into(holder.imageNews);
     }
 
@@ -81,8 +83,18 @@ public class AdapterNews extends RecyclerView.Adapter<AdapterNews.ViewHolder> im
 
         @Override
         public void onClick(View view) {
+
             int position = (int) view.getTag();
 
+            encap = arrayList.get(position);
+
+            Intent intent = new Intent(mainActivity, Detalis.class);
+
+            intent.putExtra("title", encap.getTitle());
+            intent.putExtra("desc", encap.getDesc());
+            intent.putExtra("image", encap.getImg());
+
+            mainActivity.startActivity(intent);
 
         }
 

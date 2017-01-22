@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new AdapterNews(parser.getlist(), getApplicationContext());
+        adapter = new AdapterNews(parser.getlist(), getApplicationContext(), this);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
